@@ -1,1 +1,43 @@
-<p>add-parcel works!</p>
+<h1>Add Parcel</h1>
+<form [formGroup]="parcelForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter name" />
+        <div *ngIf="parcelForm.get('name')?.invalid && parcelForm.get('name')?.touched">
+            <div *ngIf="parcelForm.get('name')?.errors?.['required']">
+                Name is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email" />
+        <div *ngIf="parcelForm.get('email')?.invalid && parcelForm.get('email')?.touched">
+            <div *ngIf="parcelForm.get('email')?.errors?.['required']">
+                Email is required
+            </div>
+            <div *ngIf="parcelForm.get('email')?.errors?.['email']">
+                Email is invalid
+            </div>
+            <div *ngIf="parcelForm.get('email')?.errors?.['emailDomain']">
+                Email domain should be travel.com
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="destination">Destination</label>
+        <input type="text" class="form-control" id="destination" formControlName="destination"
+            placeholder="Enter destination" />
+        <div *ngIf="parcelForm.get('destination')?.invalid && parcelForm.get('destination')?.touched">
+            <div *ngIf="parcelForm.get('destination')?.errors?.['required']">
+                Destination is required
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="parcelForm.invalid">
+        Submit
+    </button>
+    <button type="button" class="btn btn-danger" (click)="parcelForm.reset()">
+        Reset
+    </button>
+</form>

@@ -1,4 +1,8 @@
-h1 {
+body {
+  background: #f0f3f5;
+}
+
+h2 {
   text-align: center;
   margin-bottom: 40px;
 }

@@ -1,1 +1,23 @@
-<p>parcel-list works!</p>
+<h1>Parcel List</h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let parcel of parcelList">
+            <td>{{ parcel.name }}</td>
+            <td>{{ parcel.email }}</td>
+            <td>{{ parcel.destination }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="onDelete(parcel.id)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

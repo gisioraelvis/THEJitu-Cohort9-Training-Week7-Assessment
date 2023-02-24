@@ -1,5 +1,5 @@
-// In the parcel-list.component.ts file:
 import { Component, OnInit } from '@angular/core';
+import { Parcel } from '../parcel';
 import { ParcelService } from '../parcel.service';
 
 @Component({
@@ -8,13 +8,14 @@ import { ParcelService } from '../parcel.service';
   styleUrls: ['./parcel-list.component.css'],
 })
 export class ParcelListComponent implements OnInit {
-  parcels: any[];
-
+  onDelete(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
+  parcelList: Parcel[] = [];
   constructor(private parcelService: ParcelService) {}
-
   ngOnInit() {
-    this.parcelService.getParcels().subscribe((parcels) => {
-      this.parcels = parcels;
+    this.parcelService.parcels$.subscribe((parcels) => {
+      this.parcelList = parcels;
     });
   }
 }
