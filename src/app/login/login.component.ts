@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.authService.login();
-    
   }
 
   get username() {
